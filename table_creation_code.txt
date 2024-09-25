@@ -1,0 +1,46 @@
+create database project;
+show databases;
+use project;
+create table product (product_id varchar(30)not null primary key,Pname varchar(30) not null,brand varchar(20),product_for varchar(30),season varchar(30),rate int not null);
+desc product;
+create table purchase(purchase_id varchar(30)not null ,item_id varchar(30) references product(product_id),no_of_items int not null, amount int,purchase_date date );
+desc purchase;
+create table stock( item_id varchar(30)references product(product_id),instock int(3) not null , status varchar(10) not null);
+desc stock;
+create table sales(sales_id varchar(30) primary key,item_id varchar(30) references product(product_id),no_of_items_sold int not null,sale_rate int not null, amount int not null,date_of_sale date );
+desc sales;
+INSERT INTO product values("P101","Kurtis","Zara","Women","Summer",2500);
+INSERT INTO product values('P102',"Shirts","H&M","men","Summer",3000);
+INSERT INTO product values('P103',"Sweatshirt","Allen Solly","Women","Winter",2000);
+INSERT INTO product values('P104',"Denim jeans","Roadster","Kids","All",1000);
+INSERT INTO product values('P105',"Raincoats","Wildcraft","All","Rainy",1500);
+INSERT INTO product values('P106',"Sprotshoes","Nike","All","All",3500);
+INSERT INTO product values('P107',"Shoes","Adidas","All","Summer",2500);
+INSERT INTO product values('P108',"Makeupkit","Revlon","Women","All",15000);
+INSERT INTO purchase values("xdd7t4401","P101",50,125000,"2019/10/19");
+INSERT INTO purchase values("xdd7t3015","P102",25,75000,"2019/10/20");
+INSERT INTO purchase values("xdd7t3036","P103",35,70000,"2019/10/16");
+INSERT INTO purchase values("xdd7t5321","P104",25,25000,"2019/10/20");
+INSERT INTO purchase values("xdd7t1234","P105",40,60000,"2019/10/21");
+INSERT INTO purchase values("xdd7t5678","P106",42,147000,"2019/10/19");
+INSERT INTO purchase values("xdd7t9123","P107",50,125000,"2019/10/20");
+INSERT INTO purchase values("xdd7t4567","P108",10,150000,"2019/10/18");
+INSERT INTO stock values("P101",39,"available");
+INSERT INTO stock values("P102",10,"available");
+INSERT INTO stock values("P103",5,"available");
+INSERT INTO stock values("P104",0,"out of stock");
+INSERT INTO stock values("P105",20,"available");
+INSERT INTO stock values("P106",25,"available");
+INSERT INTO stock values ("P107",15,"available");
+INSERT INTO stock values("P108",5,"available");
+INSERT INTO sales values("S101","P101",10,2500,25000,"2019/11/1");
+INSERT INTO sales values("S102","P102",5,3000,15000,"2019/11/2");
+INSERT INTO sales values ("S103","P103",11,2000,22000,'2019/11/9');
+INSERT INTO sales values("S104","P104",20,1000,20000,'2019/11/5');
+INSERT INTO sales values("S105","P105",25,1500,37500,'2019/11/4');
+INSERT INTO sales values("S106","P106",15,3500,52500,'2019/11/6');
+INSERT INTO sales values ("S107","P107",20,2500,50000,'2019/11/3');
+INSERT INTO sales values("S108","P108",3,15000,45000,'2019/11/10');
+
+
+
